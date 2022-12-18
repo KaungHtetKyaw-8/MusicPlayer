@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane alignment="TOP_CENTER" focusTraversable="true" hgap="4.0" prefHeight="211.0" prefWidth="694.0" style="-fx-background-color: #222222;" vgap="4.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mp3PlayerController">
+   <children>
+      <MenuBar prefHeight="26.0" prefWidth="700.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#fileOpen" text="Open File" />
+                  <MenuItem mnemonicParsing="false" onAction="#folderOpen" text="Open Folder" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearList" text="Clear List" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.056296296417713165" green="0.4000000059604645" blue="0.3599012494087219" />
+               </color>
+               <input>
+                  <Lighting diffuseConstant="1.82" specularConstant="0.08" specularExponent="40.0" surfaceScale="0.86">
+                     <bumpInput>
+                        <Shadow blurType="ONE_PASS_BOX">
+                           <color>
+                              <Color red="0.5894736647605896" green="0.5392592549324036" blue="0.5392592549324036" />
+                           </color>
+                        </Shadow>
+                     </bumpInput>
+                     <light>
+                        <Light.Distant>
+                           <color>
+                              <Color red="0.8814814686775208" green="1.0" blue="0.9150617122650146" opacity="0.699999988079071" />
+                           </color>
+                        </Light.Distant>
+                     </light>
+                  </Lighting>
+               </input>
+            </InnerShadow>
+         </effect>
+      </MenuBar>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="690.0">
+         <children>
+            <ImageView fx:id="lImg" fitHeight="54.0" fitWidth="58.0" opacity="0.68" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/disc.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="songLabel" alignment="CENTER" contentDisplay="TEXT_ONLY" focusTraversable="false" graphicTextGap="5.0" pickOnBounds="false" prefHeight="98.0" prefWidth="566.0" text="Mp3 Player" textAlignment="CENTER">
+               <font>
+                  <Font name="Playball" size="32.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.9659091053587018" endY="0.9280302994179003" startX="0.13257577563777112" startY="0.15151515151515155">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.8333333134651184" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.27739224633161547">
+                           <color>
+                              <Color red="0.030916178598999977" green="0.6421052813529968" blue="0.31613776087760925" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5270065325148542">
+                           <color>
+                              <Color red="0.24292397499084473" green="0.3816257417201996" blue="0.7052631378173828" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7943012835242752">
+                           <color>
+                              <Color red="0.5616114139556885" green="0.0623781681060791" blue="0.6736842393875122" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.821052610874176" green="0.06994152069091797" blue="0.06994152069091797" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <ImageView fx:id="rImg" fitHeight="54.0" fitWidth="58.0" opacity="0.68" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/disc.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <ProgressBar fx:id="songProgressBar" prefHeight="18.0" prefWidth="690.0" progress="0.0" style="-fx-accent: #d00dd1;">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.5789473652839661" green="0.23157894611358643" blue="0.11578947305679321" opacity="0.7099999785423279" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ProgressBar>
+      <TilePane prefColumns="8" prefHeight="71.0" prefRows="1" prefWidth="695.0">
+         <children>
+            <Button fx:id="repeatButton" focusTraversable="false" mnemonicParsing="false" onAction="#repete" prefHeight="25.0" prefWidth="25.0" style="-fx-shape: &quot;M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96H320v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32V64H160C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96H192V352c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V448H352c88.4 0 160-71.6 160-160z&quot;;">
+               <effect>
+                  <Bloom threshold="0.0" />
+               </effect></Button>
+            <Button fx:id="resetButton" focusTraversable="false" mnemonicParsing="false" onAction="#resetMedia" prefHeight="25.0" prefWidth="25.0" style="-fx-shape: &quot;M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z&quot;;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="previousButton" focusTraversable="false" mnemonicParsing="false" onAction="#previousMedia" prefHeight="31.0" prefWidth="31.0" style="-fx-shape: &quot;M459.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4L288 214.3V256v41.7L459.5 440.6zM256 352V256 128 96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160C4.2 237.5 0 246.5 0 256s4.2 18.5 11.5 24.6l192 160c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V352z&quot;;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="playPauseButton" focusTraversable="false" mnemonicParsing="false" onAction="#playPauseMedia" prefHeight="50.0" prefWidth="52.0" style="-fx-shape: &quot;M188.3 147.1C195.8 142.8 205.1 142.1 212.5 147.5L356.5 235.5C363.6 239.9 368 247.6 368 256C368 264.4 363.6 272.1 356.5 276.5L212.5 364.5C205.1 369 195.8 369.2 188.3 364.9C180.7 360.7 176 352.7 176 344V167.1C176 159.3 180.7 151.3 188.3 147.1V147.1zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z&quot;&quot;M188.3 147.1C195.8 142.8 205.1 142.1 212.5 147.5L356.5 235.5C363.6 239.9 368 247.6 368 256C368 264.4 363.6 272.1 356.5 276.5L212.5 364.5C205.1 369 195.8 369.2 188.3 364.9C180.7 360.7 176 352.7 176 344V167.1C176 159.3 180.7 151.3 188.3 147.1V147.1zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z&quot;;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="nextButton" cache="true" focusTraversable="false" mnemonicParsing="false" onAction="#nextMedia" prefHeight="31.0" prefWidth="31.0" style="-fx-shape: &quot;M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416V96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4L224 214.3V256v41.7L52.5 440.6zM256 352V256 128 96c0-12.4 7.2-23.7 18.4-29s24.5-3.6 34.1 4.4l192 160c7.3 6.1 11.5 15.1 11.5 24.6s-4.2 18.5-11.5 24.6l-192 160c-9.5 7.9-22.8 9.7-34.1 4.4s-18.4-16.6-18.4-29V352z&quot;;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="speedBox" focusTraversable="false" onAction="#changeSpeed" pickOnBounds="false" prefHeight="40.0" prefWidth="50.0" style="-fx-shape: &quot;M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM320 352c0-26.9-16.5-49.9-40-59.3V88c0-13.3-10.7-24-24-24s-24 10.7-24 24V292.7c-23.5 9.5-40 32.5-40 59.3c0 35.3 28.7 64 64 64s64-28.7 64-64zM144 176c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm-16 80c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zm288 32c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zM400 144c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z&quot;;" visibleRowCount="1" />
+            <Slider fx:id="volumeSlider" blockIncrement="5.0" focusTraversable="false" pickOnBounds="false" prefHeight="14.0" prefWidth="94.0" value="50.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+         <effect>
+            <InnerShadow height="35.0" radius="18.25" width="40.0">
+               <color>
+                  <Color red="0.6333333253860474" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </TilePane>
+      <ScrollPane fitToWidth="true" focusTraversable="false" pickOnBounds="false">
+         <content>
+            <GridPane fx:id="playList" alignment="CENTER" hgap="15.0" prefHeight="110.0" prefWidth="700.0" style="-fx-background-color: #808080;" vgap="15.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="616.5999267578125" minWidth="10.0" prefWidth="616.5999267578125" />
+                <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="341.20001220703125" minWidth="10.0" prefWidth="75.00007324218745" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</FlowPane>
